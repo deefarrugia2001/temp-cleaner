@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace VSTempCleaner
 {
-    public class Prefetch
+    public class Prefetch : Repository
     {
+        public Prefetch() : base() 
+        {
+        }
     }
 }

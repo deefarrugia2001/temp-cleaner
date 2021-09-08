@@ -60,6 +60,7 @@ namespace VSTempCleaner
                 }
             }
 
+            //Iterate through each file in the root folder and proceed with deletion.
             IEnumerable<FileInfo> files = directory.EnumerateFiles();
             foreach (FileInfo file in files)
                 file.Delete();

@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace VSTempCleaner
 {
-    public class Class1
+    public class Repository
     {
+        /* path will contain the absolute path of the folder containing the temporary files. 
+         * The accessibility modifier has been set to protected as the member needs to be accessed from deriving classes. */
+        protected string path;
     }
 }

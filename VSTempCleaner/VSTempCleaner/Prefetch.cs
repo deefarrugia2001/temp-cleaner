@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace VSTempCleaner
+﻿namespace VSTempCleaner
 {
     public class Prefetch : Repository
     {
         public Prefetch() : base() 
         {
+            this.path = @"C:\Windows\prefetch";
         }
     }
 }

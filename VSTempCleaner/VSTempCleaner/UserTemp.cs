@@ -2,7 +2,7 @@
 
 namespace VSTempCleaner
 {
-    public class UserTemp : Repository
+    public sealed class UserTemp : Repository
     {
         public UserTemp() : base() 
         {

@@ -1,6 +1,6 @@
 ﻿namespace VSTempCleaner
 {
-    public class WinTemp : Repository
+    public sealed class WinTemp : Repository
     {
         public WinTemp() : base() 
         {

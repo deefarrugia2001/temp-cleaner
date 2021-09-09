@@ -1,6 +1,6 @@
 ﻿namespace VSTempCleaner
 {
-    public class Prefetch : Repository
+    public sealed class Prefetch : Repository
     {
         public Prefetch() : base() 
         {

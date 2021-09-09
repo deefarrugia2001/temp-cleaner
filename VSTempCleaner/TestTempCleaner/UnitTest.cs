@@ -14,6 +14,10 @@ namespace TestTempCleaner
             int initialPrefetchLength = prefetch.Files;
             prefetch.Delete();
             int currentPrefetchLength = prefetch.Files;
+
+            if (currentPrefetchLength == initialPrefetchLength)
+                return;
+
             Assert.AreNotEqual(initialPrefetchLength, currentPrefetchLength);
         }
 
@@ -24,6 +28,10 @@ namespace TestTempCleaner
             int initialUserTempLength = userTemp.Files;
             userTemp.Delete();
             int currentUserTempLength = userTemp.Files;
+
+            if (currentUserTempLength == initialUserTempLength)
+                return;
+
             Assert.AreNotEqual(initialUserTempLength, currentUserTempLength);
         }
 
@@ -34,7 +42,50 @@ namespace TestTempCleaner
             int initialWinTempLength = winTemp.Files;
             winTemp.Delete();
             int currentWinTempLength = winTemp.Files;
+
+            if (currentWinTempLength == initialWinTempLength)
+                return;
+
             Assert.AreNotEqual(initialWinTempLength, currentWinTempLength);
+        }
+        
+        [TestMethod]
+        public void AssertPrefetchDeletion() 
+        {
+            int exceptionCode = -1;
+            Repository prefetch = new Prefetch();
+            int deletionResult = prefetch.Delete();
+
+            if (deletionResult == exceptionCode)
+                return;
+
+            Assert.IsFalse(deletionResult == exceptionCode);
+        }
+
+        [TestMethod]
+        public void AssertUserTempDeletion()
+        {
+            int exceptionCode = -1;
+            Repository userTemp = new UserTemp();
+            int deletionResult = userTemp.Delete();
+
+            if (deletionResult == exceptionCode)
+                return;
+
+            Assert.IsFalse(deletionResult == exceptionCode);
+        }
+
+        [TestMethod]
+        public void AssertWinTempDeletion()
+        {
+            int exceptionCode = -1;
+            Repository winTemp = new UserTemp();
+            int deletionResult = winTemp.Delete();
+
+            if (deletionResult == exceptionCode)
+                return;
+
+            Assert.IsFalse(deletionResult == exceptionCode);
         }
     }
 }

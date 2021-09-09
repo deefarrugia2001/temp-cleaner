@@ -33,6 +33,16 @@ namespace VSTempCleaner
         /// </summary>
         public string Path => path;
 
+        public int Files 
+        {
+            get
+            {
+                DirectoryInfo directory = new DirectoryInfo(path);
+                int fileCount = directory.GetFileSystemInfos().Length;
+                return fileCount;
+            }
+        }
+
         /// <summary>
         /// Delete files and subfolders residing in the repository.
         /// </summary>

@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.31624.102
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VSTempCleaner", "VSTempCleaner\VSTempCleaner.csproj", "{0362601D-CC67-486F-B3D0-0CD8DDB3625A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trial", "Trial\Trial.csproj", "{C4A97980-C8D1-4FAA-9E34-C4718AA178C7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestTempCleaner", "TestTempCleaner\TestTempCleaner.csproj", "{EEC56ACB-CA1F-4530-91A8-D88FF5A2B80A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{0362601D-CC67-486F-B3D0-0CD8DDB3625A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0362601D-CC67-486F-B3D0-0CD8DDB3625A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0362601D-CC67-486F-B3D0-0CD8DDB3625A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C4A97980-C8D1-4FAA-9E34-C4718AA178C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C4A97980-C8D1-4FAA-9E34-C4718AA178C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C4A97980-C8D1-4FAA-9E34-C4718AA178C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C4A97980-C8D1-4FAA-9E34-C4718AA178C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EEC56ACB-CA1F-4530-91A8-D88FF5A2B80A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEC56ACB-CA1F-4530-91A8-D88FF5A2B80A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEC56ACB-CA1F-4530-91A8-D88FF5A2B80A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEC56ACB-CA1F-4530-91A8-D88FF5A2B80A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

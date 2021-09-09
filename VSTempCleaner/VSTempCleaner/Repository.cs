@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.InteropServices;
+using System.Security;
 
 namespace VSTempCleaner
 {
@@ -35,40 +36,51 @@ namespace VSTempCleaner
         /// <summary>
         /// Delete files and subfolders residing in the repository.
         /// </summary>
-        public void Delete() 
+        public int Delete() 
         {
-            DirectoryInfo directory = new DirectoryInfo(path); //Locate directory with the given path.
-            IEnumerable<DirectoryInfo> subDirectories = directory.EnumerateDirectories(); //Search for any subfolders.
+            int returnValue;
 
-            //Proceed with deletion of content in subfolders if there is at least one subfolder.
-            if (subDirectories != null)
+            try 
             {
-                //Iterate through each subfolder and delete accordingly.
-                foreach (DirectoryInfo subDirectory in subDirectories)
+                DirectoryInfo directory = new DirectoryInfo(path); //Locate directory with the given path.
+                IEnumerable<DirectoryInfo> subDirectories = directory.EnumerateDirectories(); //Search for any subfolders.
+
+                //Proceed with deletion of content in subfolders if there is at least one subfolder.
+                if (subDirectories != null)
                 {
-                    IEnumerable<FileInfo> subFiles = subDirectory.EnumerateFiles();
-
-                    //Proceed with deletion if there is at least a single file.
-                    if(subFiles != null)
+                    //Iterate through each subfolder and delete accordingly.
+                    foreach (DirectoryInfo subDirectory in subDirectories)
                     {
-                        //Iterate through each file in subfolders and delete accordingly.
-                        foreach (FileInfo file in subFiles)
-                            file.Delete();
-                    }
+                        IEnumerable<FileInfo> subFiles = subDirectory.EnumerateFiles();
 
-                    subDirectory.Delete(true);
+                        //Proceed with deletion if there is at least a single file.
+                        if (subFiles != null)
+                        {
+                            //Iterate through each file in subfolders and delete accordingly.
+                            foreach (FileInfo file in subFiles)
+                                file.Delete();
+                        }
+
+                        subDirectory.Delete(true);
+                    }
                 }
+
+                //Iterate through each file in the root folder and proceed with deletion.
+                IEnumerable<FileInfo> files = directory.EnumerateFiles();
+                foreach (FileInfo file in files)
+                    file.Delete();
+
+                /* As opposed to Java, when deleting files/directories, the Recycle Bin is not cleared.
+                 * Therefore, Shell32.dll had to be imported in the class library and invoked
+                 * in order to automatically clear the recycle bin without confirmation. */
+                returnValue = SHEmptyRecycleBin(IntPtr.Zero, null, RecycleFlag.SHERB_NOCONFIRMATION);
+            }
+            catch(Exception ex) when (ex is PathTooLongException || ex is SecurityException || ex is ArgumentException || ex is ArgumentNullException || ex is DirectoryNotFoundException || ex is UnauthorizedAccessException || ex is IOException) 
+            {
+                returnValue = -1;
             }
 
-            //Iterate through each file in the root folder and proceed with deletion.
-            IEnumerable<FileInfo> files = directory.EnumerateFiles();
-            foreach (FileInfo file in files)
-                file.Delete();
-
-            /* As opposed to Java, when deleting files/directories, the Recycle Bin is not cleared.
-             * Therefore, Shell32.dll had to be imported in the class library and invoked
-             * in order to automatically clear the recycle bin without confirmation. */
-            SHEmptyRecycleBin(IntPtr.Zero, null, RecycleFlag.SHERB_NOCONFIRMATION);
+            return returnValue;
         }
     }
 }

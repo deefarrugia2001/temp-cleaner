@@ -1,5 +1,6 @@
 package nbtempcleaner;
 
-public class Prefetch {
+//extends denotes that Prefetch can now access members belonging to Repository.
+public class Prefetch extends Repository {
     
 }

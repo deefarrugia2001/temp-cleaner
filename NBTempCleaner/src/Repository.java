@@ -1,5 +1,3 @@
-package nbtempcleaner;
-
 import java.io.File; //Imported in order to access and create directories, as well as to fetch their respective sub-folders and prooeed with deletion.
 
 /* Repository has been declared abstract with the aim to simply contain members common to all classes representing folders containing temporary data. 

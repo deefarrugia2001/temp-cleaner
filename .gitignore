@@ -334,3 +334,5 @@ ASALocalRun/
 .localhistory/
 /NBTempCleaner/nbproject/private/
 /NBTempCleaner_TEST/nbproject/private/
+/NBTempCleaner_TEST/build/
+/NBTempCleaner/build/

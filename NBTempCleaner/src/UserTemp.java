@@ -1,5 +1,3 @@
-package nbtempcleaner;
-
 import com.sun.security.auth.module.NTSystem;
 
 /* Please note that this only deletes the %temp% content of the currently logged in user!
